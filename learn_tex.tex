@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage{syntonly}
+\usepackage{verbatim}
+\usepackage{graphicx}%input graphs.
+\usepackage{mdwlist}
+\usepackage{amsmath} %tag and eqref
+\usepackage{amsthm}
+\usepackage{textcomp} %makes the degree symbol also available
+\usepackage{minted}
+%\textdegree \textcelsius
+\hyphenation{FORTRAN}
+\pagestyle{plain}
+\title{\LaTeX{}  learning}
+\author{suchan}
+\begin{document}
+\maketitle
+\verbatiminput{a.html}
+\begin{figure}
+	\centering
+	\scalebox{1.0}{
+	\includegraphics{test}
+}
+\caption{sdfsdf}
+
+\end{figure}
+\inputminted[linenos]{c}{avg_realloc.c}
+``This'' 'is' `my' \emph{first} document prepared in" \LaTeX.\\
+\textbackslash documentclass\{article\} tells \LaTeX that what we want to produce is an article. If you want to write a book, this must be changed to \textbackslash documentclass\{book\}. The whole document we want to typeset should be included between \textbackslash begin\{document\} and \textbackslash end\{document\}.
+\\* Then \textbackslash emph\{first\}, becomes\emph{first} in the output. It is a common practice to \emph{emphasize} words in print using italic letters. I typed it on \today.
+
+\section{Input files}
+\subsection{space}
+It does not matter whether you enter one or several     spaces after a word.
+
+An empty line starts a new paragraph.
+\subsection{Special Characters}
+The following characters are reserved characters that either have a special meaning under \LaTeX or are not available in all font.If you type them directly in \LaTeX, they will normally not print.
+
+As you can see.... \# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash...\^{} and \~{} should be \textbackslash \^{}\{\} and \textbackslash \~{}\{\}.
+\subsection{\LaTeX{} Commands}
+\LaTeX ignore whitespace after commands. If you want to get a space after a command, you have to put either an empty parameter{} and a blank or special spacing command after the command name. The empty parameter\{\} stops \LaTeX{} from eating up all whitespace after the command name.
+
+Some commands require a perameter, which has to be given between curly braces\{ \} after the command name. Some commands take optional parameters, which are inserted after the command name in square brcakets\[ \].
+
+\textbackslash \emph{Command} [\emph{Optional parameter} ] \{\emph{parameter}\}
+
+Some examples:
+
+You can \textsl{lean} on me! You can \textbackslash testsl \{lean\} on me.
+
+Please, start a new line right here!\textbackslash newline \newline
+Thankyou!
+
+\subsection{Comments}
+
+\%
+
+The \% character can also be used to split long input lines where no whitespace or line breaks\%are allowed.
+
+For longer comments, you can use verbatim package. Add line \textbackslash usepackage\{verbatim\} to the preamble of your document.
+
+This is another \begin{comment} abcdefg \end{comment}
+
+This is another \textbackslash begin\{comment\} abcdefg \textbackslash end \{comment\}
+
+\subsection{Input File Structure}
+Every inputfile start with the command \textbackslash documentclass\{...\}
+
+To load a package use the command: \textbackslash usepackage\{...\}
+
+You start with the body of the text with the command:\textbackslash begin\{document\}
+
+At the end of the document you add \textbackslash end\{document\}
+
+\subsection{A Typical Command Line Session}
+The area between \textbackslash documentclass and \textbackslash\{document\} is called a preamble.
+
+Compiling your \LaTeX{} input file:
+\begin{comment}
+	\begin{enumerate}
+	\begin{itemize}
+	\begin{description} \hfill
+	\item Nested
+\end{comment}
+\begin{description}
+	\item[first] \hfill \\ Create your \LaTeX input file. This file must be plain ASCII text.
+	\item[second] \hfill  
+		\begin{enumerate}
+		\item
+		Open shell.
+	\item
+		latex foo.tex
+	\item
+		xdvi foo.dvi \&
+\end{enumerate}
+\end{description}
+Convert dvi file to PostScript for printing or viewing with GhostScript.
+		
+dvips -Pcmz foo.dvi -o foo.ps
+
+dvipdf foo.dvi
+
+\subsection{The Layout of the Document}
+\subsubsection{Document Classes}
+Example:An input file for a \LaTeX{} document could start with\linebreak[3]\break \sloppy the line.
+
+\textbackslash documentclass[11pt, twoside,a4paper]\{article\}
+
+\subsubsection{Packages}
+If you want to include graphics, coloured text or source code from a file into your document, you need to enhance the capability of \LaTeX
+. Such enhancement called packages.
+
+Add commandline: \textbackslash usepackage[options]\{package\}
+\begin{itemize}
+	\item
+		article for articles in scientific journals, short reports, presentations, invitations, program documentations.
+	\item
+		proc a cladd for proceeding based on article class.
+	\item
+		minimal is as small as it can get. It only set page size and base font. It is mainly used for debugging purpose.
+	\item
+		report for longer reports containing several chapters, small books, PHD thesis,...
+	\item
+		book for real books
+	\item
+		slide for slides. 
+	\item
+\end{itemize}
+
+
+\section{typesetting}
+\subsection{Line breaking and page breaking}
+For a line breaking, using \textbackslash\textbackslash or \textbackslash newline
+The difference between ``the empty line between two sentences" and \textbackslash\textbackslash is intended.
+Starting a new page: using \textbackslash newpage.
+It seems that \textbackslash linebreak[n] and \textbackslash pagebreak[n] can only be used above 4..because you leave \LaTeX the option of ignoring your command if the result would look very bad.
+\subsection{Hyphenation}
+This means that if you place a hyphenation command into the preamble of your document it will influence th e English language hyphenation. If you place the command after the \textbackslash begin\{document\} and you are using some package for national language support like babel, then the hyphenation hints will be active in the language activated through babel.
+
+\paragraph{If you use \textbackslash\{FORTRAN Hy-phen-a-tion\} can prevents FORTRAN, no special character or symbols are allowed in the argument.}
+
+command \textbackslash - inserts a discretionary hyphen into a word. I think this isaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:su\-persdf\-sdfsdf\-gggggg.
+
+Several worda can be kept together on one line with the command by using \textbackslash mbox{}and \textbackslash fbox{} \mbox{12345678912312312} \fbox{12123123123123\\sdhjfsdh}
+
+\subsection{Ready-made String}
+\today
+
+\LaTeX
+
+\TeX
+
+\LaTeXe
+
+\subsection{Special Characters and Symbols}
+\subsubsection{Quotation Marks}
+You should not use " in \LaTeX{} , use two grave accent for opening and the vertical quote for closing quotation.
+\subsubsection{Dashes and Hyphens}
+X-rated
+
+pages 12--37
+
+yes---or no?
+
+$0$, $1$ or $-1$
+\subsubsection{Tilde($\sim$)}
+\~{} and $\sim$.
+
+\subsubsection{Slash}
+read\slash write allows hyphenation. Normal `/' character may be still used for ratios or units. 5MB/s.
+
+\subsubsection{Degree Symbol($^{\circ}\mathrm{C}$)}
+
+30 \textcelsius{}
+45 \textdegree{}F.
+\texteuro%use package{textcomp}
+
+\subsubsection{Ellipsis}
+\ldots(low dots)
+Not like this ... but like this:\\
+New York. Tokyo, Budapest, \ldots
+
+\subsubsection{Ligatures}
+Disable ligatures: shelf\mbox{}ful
+
+se\~no h\^otel \"o
+I like BASIC\@.~ What about you
+
+sdfsdf\label{sec:this} sdfsd~\ref{sec:this}
+sdhfjsdhf\footnote{ssdfsd} \underline{text}
+\emph{a\emph{c}}c
+\verb@\ldots@
+\subsubsection{tabular}
+\begin{tabular}{|r|l|}
+	\hline
+	aaa&bbb\\
+	ccc&ddd\\
+	eee&ffff\\ \cline{2-2}
+	ggg&hhh\\ \hline
+	\hline
+	rrr&uuu\\
+	\hline
+\end{tabular}
+\begin{tabular}{|p{4.7cm}|}
+	\hline
+	aaaaaaaaaaaaaaa\\
+	\hline
+\end{tabular}
+
+\begin{tabular}[c]{|p{10cm}|c|r|l|}
+	\hline
+	111111&222222&333333&444444\\
+	\hline
+	111111&222222&333333&444444\\
+	\hline
+\end{tabular}
+
+\begin{tabular}{@{dddd} c @{fffff}}
+	\hline
+	sdfsdfsdf\\
+	\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\multicolumn{3}{|c|}{aaa}\\
+	\hline
+	wwww&yyyyyyyyyyyy&yyuiu\\
+	\hline
+\end{tabular}
+\begin{tabular}{c r @{.} l}
+	pi &\multicolumn{2}{c}{value}\\
+	\hline
+	$\pi$ & 3&1415\\
+	$\pi^{\pi}$ &  45&6\\
+\end{tabular}
+
+\begin{tabular}{|p{4.7cm}|}
+\hline
+Add a squared and b squared to get c squared.
+\begin{equation}
+	a^2+b^2=c^3
+\end{equation}
+Einstein says:
+\begin{equation}
+	E=mc^2\label{clever}
+\end{equation}
+He didn't say
+\begin{equation}
+	1+1=3 \tag{dumb}
+\end{equation}
+This is a reference to \eqref{clever}.\\
+\hline
+\end{tabular}
+
+In text style:
+$1\frac{1}{2} hours$
+$1\frac{1}{2}$~hours
+
+$1\dfrac{1}{2} hours$ \qquad
+$1\tfrac{1}{2} hours$
+
+$\sqrt{\frac{x^2}{y+1}}$
+$\surd{\frac{x^2}{y+1}}$
+$x^{\frac{2}{k+1}}$
+$\frac{\partial^2f}{\partial{x^2}}$
+
+$\binom{n}{k}=\binom{n-1}{k}+\binom{n-1}
+{k-1}$ 
+$f_n(x)\stackrel{*}{\approx}1 \, sdfjkslsk?$
+\begin{equation}
+\sum_{i=1}^n
+\prod_\epsilon
+\end{equation}
+sdfsfdsdf
+sdfsdfsfd
+
+sdfsdf
+
+\verb.sdfsdf.
+
+
+\begin{proof}
+	thisidjf
+	\[e^{x+y}=e^x\cdots e^y \qedhere\]
+\end{proof}
+\begin{proof}
+	thisidjf
+	$$e^{x+y}=e^x\cdots e^y \qedhere$$
+\end{proof}
+
+sdfsdf
+\end{document}
